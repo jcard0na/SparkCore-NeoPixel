@@ -36,8 +36,8 @@
   <http://www.gnu.org/licenses/>.
   --------------------------------------------------------------------*/
   
-#ifndef SPARK_NEOPIXEL_H
-#define SPARK_NEOPIXEL_H
+#ifndef SPARK_NEOPIXEL__SPARK_INTERNET_BUTTON_H
+#define SPARK_NEOPIXEL__SPARK_INTERNET_BUTTON_H
 
 #include "application.h"
 
@@ -87,4 +87,4 @@ class Adafruit_NeoPixel {
     endTime;       // Latch timing reference
 };
 
-#endif // ADAFRUIT_NEOPIXEL_H
+#endif // SPARK_NEOPIXEL__SPARK_INTERNET_BUTTON_H
