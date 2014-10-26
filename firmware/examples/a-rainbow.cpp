@@ -8,7 +8,7 @@
 
 #include "application.h"
 //#include "spark_disable_wlan.h" // For faster local debugging only
-#include "neopixel/neopixel.h"
+#include "SparkCore-NeoPixel/neopixel__Spark_internet_button.h"
 
 // IMPORTANT: Set pixel COUNT, PIN and TYPE
 #define PIXEL_PIN A7
