@@ -21,6 +21,7 @@
   Written by Phil Burgess / Paint Your Dragon for Adafruit Industries.
   Modified to work with Spark Core by Technobly.
   Contributions by PJRC and other members of the open source community.
+  Amended for "Spark Internet Button" by Gregory Fenton
 
   Adafruit invests time and resources providing this open source code,
   please support Adafruit and open-source hardware by purchasing products
@@ -44,8 +45,8 @@ uint32_t Wheel(byte WheelPos);
 /* ======================= extra-examples.cpp ======================== */
 
 // IMPORTANT: Set pixel COUNT, PIN and TYPE
-#define PIXEL_COUNT 10
-#define PIXEL_PIN D2
+#define PIXEL_COUNT 11
+#define PIXEL_PIN A7
 #define PIXEL_TYPE WS2812B
 
 // Parameter 1 = number of pixels in strip
