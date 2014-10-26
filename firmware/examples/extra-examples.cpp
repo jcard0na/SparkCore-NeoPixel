@@ -32,7 +32,7 @@
 
 #include "application.h"
 //#include "spark_disable_wlan.h" (for faster local debugging only)
-#include "neopixel__spark_internet_button.h"
+#include "neopixel__spark_internet_button/neopixel__spark_internet_button.h"
 
 /* ======================= prototypes =============================== */
 
