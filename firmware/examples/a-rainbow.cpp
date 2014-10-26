@@ -3,6 +3,7 @@
  * with more explantory documentation, example routines, how to 
  * hook up your pixels and all of the pixel types that are supported.
  *
+ * Amended for "Spark Internet Button" by Gregory Fenton
  */
 
 #include "application.h"
@@ -10,8 +11,8 @@
 #include "neopixel/neopixel.h"
 
 // IMPORTANT: Set pixel COUNT, PIN and TYPE
-#define PIXEL_PIN D2
-#define PIXEL_COUNT 10
+#define PIXEL_PIN A7
+#define PIXEL_COUNT 11
 #define PIXEL_TYPE WS2812B
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
