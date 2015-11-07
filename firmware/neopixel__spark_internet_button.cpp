@@ -107,7 +107,7 @@ void Adafruit_NeoPixel::show(void) {
       c = ((uint32_t)g << 16) | ((uint32_t)r <<  8) | b; // Pack the next 3 bytes to keep timing tight
       j = 0;        // reset the 24-bit counter
       do {
-        PIN_MAP[pin].gpio_peripheral->BSRR = PIN_MAP[pin].gpio_pin; // HIGH
+        pinSetFast(pin); // HIGH
         if (c & mask) { // if masked bit is high
           // WS2812 spec             700ns HIGH
           // Adafruit on Arduino    (meas. 812ns)
@@ -125,7 +125,7 @@ void Adafruit_NeoPixel::show(void) {
           // WS2812 spec             600ns LOW
           // Adafruit on Arduino    (meas. 436ns)
           // This lib on Spark Core (meas. 472ns)
-          PIN_MAP[pin].gpio_peripheral->BRR = PIN_MAP[pin].gpio_pin; // LOW
+          pinResetFast(pin); // LOW
           asm volatile(
             "mov r0, r0" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
             "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
@@ -141,7 +141,7 @@ void Adafruit_NeoPixel::show(void) {
           // WS2812 spec             800ns LOW
           // Adafruit on Arduino    (meas. 938ns)
           // This lib on Spark Core (meas. 932ns)
-          PIN_MAP[pin].gpio_peripheral->BRR = PIN_MAP[pin].gpio_pin; // LOW
+          pinResetFast(pin); // LOW
           asm volatile(
             "mov r0, r0" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
             "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
@@ -167,7 +167,7 @@ void Adafruit_NeoPixel::show(void) {
       c = ((uint32_t)r << 16) | ((uint32_t)g <<  8) | b; // Pack the next 3 bytes to keep timing tight
       j = 0;        // reset the 24-bit counter
       do {
-        PIN_MAP[pin].gpio_peripheral->BSRR = PIN_MAP[pin].gpio_pin; // HIGH
+        pinSetFast(pin); // HIGH
         if (c & mask) { // if masked bit is high
           // WS2811 spec             1.20us HIGH
           // Adafruit on Arduino    (meas. 1.25us)
@@ -191,7 +191,7 @@ void Adafruit_NeoPixel::show(void) {
           // WS2811 spec             1.30us LOW
           // Adafruit on Arduino    (meas. 1.25us)
           // This lib on Spark Core (meas. 1.25us)
-          PIN_MAP[pin].gpio_peripheral->BRR = PIN_MAP[pin].gpio_pin; // LOW
+          pinResetFast(pin); // LOW
           asm volatile(
             "mov r0, r0" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
             "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
@@ -220,7 +220,7 @@ void Adafruit_NeoPixel::show(void) {
           // WS2811 spec             2.000us LOW
           // Adafruit on Arduino    (meas. 2.000us)
           // This lib on Spark Core (meas. 2.000us)
-          PIN_MAP[pin].gpio_peripheral->BRR = PIN_MAP[pin].gpio_pin; // LOW
+          pinResetFast(pin); // LOW
           asm volatile(
             "mov r0, r0" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
             "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
@@ -261,7 +261,7 @@ void Adafruit_NeoPixel::show(void) {
       c = ((uint32_t)r << 16) | ((uint32_t)g <<  8) | b; // Pack the next 3 bytes to keep timing tight
       j = 0;        // reset the 24-bit counter
       do {
-        PIN_MAP[pin].gpio_peripheral->BSRR = PIN_MAP[pin].gpio_pin; // HIGH
+        pinSetFast(pin); // HIGH
         if (c & mask) { // if masked bit is high
           // TM1803 spec             1.36us HIGH
           // Pololu on Arduino      (meas. 1.31us)
@@ -287,7 +287,7 @@ void Adafruit_NeoPixel::show(void) {
           // TM1803 spec             680ns LOW
           // Pololu on Arduino      (meas. 1.024us)
           // This lib on Spark Core (meas. 670ns)
-          PIN_MAP[pin].gpio_peripheral->BRR = PIN_MAP[pin].gpio_pin; // LOW
+          pinResetFast(pin); // LOW
           asm volatile(  
             "mov r0, r0" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
             "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
@@ -311,7 +311,7 @@ void Adafruit_NeoPixel::show(void) {
           // TM1803 spec             1.36us LOW
           // Pololu on Arduino      (meas. 2.00us)
           // This lib on Spark Core (meas. 1.36us)
-          PIN_MAP[pin].gpio_peripheral->BRR = PIN_MAP[pin].gpio_pin; // LOW
+          pinResetFast(pin); // LOW
           asm volatile(
             "mov r0, r0" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
             "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
@@ -342,7 +342,7 @@ void Adafruit_NeoPixel::show(void) {
       g = *ptr++;   // Next green byte value
       c = ((uint32_t)r << 16) | ((uint32_t)b <<  8) | g; // Pack the next 3 bytes to keep timing tight
       j = 0;        // reset the 24-bit counter
-      PIN_MAP[pin].gpio_peripheral->BRR = PIN_MAP[pin].gpio_pin; // LOW
+      pinResetFast(pin); // LOW
       for( ;; ) {   // ... pixel done
         if (c & mask) { // if masked bit is high
           // TM1829 spec             800ns LOW
@@ -359,12 +359,12 @@ void Adafruit_NeoPixel::show(void) {
           j++;
           // TM1829 spec             300ns HIGH
           // This lib on Spark Core (meas. 319ns)
-          PIN_MAP[pin].gpio_peripheral->BSRR = PIN_MAP[pin].gpio_pin; // HIGH
+          pinSetFast(pin); // HIGH
           asm volatile(
             "mov r0, r0" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
             ::: "r0", "cc", "memory");
           if(j==24) break;
-          PIN_MAP[pin].gpio_peripheral->BRR = PIN_MAP[pin].gpio_pin; // LOW
+          pinResetFast(pin); // LOW
         }
         else { // else masked bit is low
           // TM1829 spec             300ns LOW
@@ -374,7 +374,7 @@ void Adafruit_NeoPixel::show(void) {
             ::: "r0", "cc", "memory");
           // TM1829 spec             800ns HIGH
           // This lib on Spark Core (meas. 805ns)
-          PIN_MAP[pin].gpio_peripheral->BSRR = PIN_MAP[pin].gpio_pin; // HIGH
+          pinSetFast(pin); // HIGH
           j++;
           mask >>= 1; // Do this task during the long delay of this bit
           asm volatile(
@@ -386,7 +386,7 @@ void Adafruit_NeoPixel::show(void) {
             "nop" "\n\t" "nop" "\n\t" "nop" "\n\t" "nop" "\n\t"
             ::: "r0", "cc", "memory");
           if(j==24) break;
-          PIN_MAP[pin].gpio_peripheral->BRR = PIN_MAP[pin].gpio_pin; // LOW
+          pinResetFast(pin); // LOW
         }
       }
     } // end while(i) ... no more pixels
